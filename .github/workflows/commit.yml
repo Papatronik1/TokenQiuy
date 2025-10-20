@@ -18,8 +18,8 @@ name: Checkout repository
       
 name: Set up Git
       run: |
-        git config --global user.name "Marik0023"
-        git config --global user.email "breykerr42@gmail.com"
+        git config --global user.name "Papatronik1"
+        git config --global user.email "qwsxc192@gmail.com"
 
       
 name: Generate random commits
