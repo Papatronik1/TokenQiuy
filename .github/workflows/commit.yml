@@ -1,0 +1,34 @@
+name: Safe Commit Bot
+
+on:
+  schedule:
+    
+cron: "0 6 * * *"   # щодня о 06:00 UTC
+workflow_dispatch:       # можливість запускати вручну
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      
+name: Checkout repository
+      uses: actions/checkout@v3
+
+      
+name: Set up Git
+      run: |
+        git config --global user.name "Marik0023"
+        git config --global user.email "breykerr42@gmail.com"
+
+      
+name: Generate random commits
+      run: |
+        COUNT=$((200 + RANDOM % 100))  # від 200 до 300
+        echo "Буду робити $COUNT комітів"
+        for i in $(seq 1 $COUNT); do
+          echo "$(date) $RANDOM" >> journal.md
+          git add journal.md
+          git commit -m "Auto commit $i"
+        done
+        git push
